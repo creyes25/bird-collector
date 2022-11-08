@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Bird
 
 # Create your views here.
@@ -15,3 +16,8 @@ def birds_index(request):
 def birds_details(request, bird_id):
   bird = Bird.objects.get(id=bird_id)
   return render(request, 'birds/details.html', {'bird': bird} )
+
+class BirdCreate(CreateView):
+  model = Bird
+  fields = '__all__'
+  success_url = '/birds/'

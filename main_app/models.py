@@ -13,5 +13,5 @@ class Bird(models.Model):
   def __str__(self):
     return self.name
 
-  # def get_absolute_url(self):
-  #     return reverse("birds_detail", kwargs={"finch_id": self.id})
+  def get_absolute_url(self):
+      return reverse("birds_details", kwargs={"bird_id": self.id})
