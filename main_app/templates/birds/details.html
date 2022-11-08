@@ -23,7 +23,8 @@
     <p><small>{{bird.description}}</small></p>
   </div>
   <div class="bird-actions">
-    <a href="{% url 'birds_update' bird.id %}">Edit</a>
+    <a href="{% url 'birds_update' bird.id %}"><button>Edit</button></a>
+    <a href="{% url 'birds_delete' bird.id %}"><button>Delete</button></a>
   </div>
 </section>
 

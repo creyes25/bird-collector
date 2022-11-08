@@ -25,3 +25,7 @@ class BirdCreate(CreateView):
 class BirdUpdate(UpdateView):
   model = Bird
   fields = ['description', 'habitat', 'color', 'age']
+
+class BirdDelete(DeleteView):
+  model = Bird
+  success_url = '/birds/'
