@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Bird
 
 # Create your views here.
@@ -21,3 +21,7 @@ class BirdCreate(CreateView):
   model = Bird
   fields = '__all__'
   success_url = '/birds/'
+
+class BirdUpdate(UpdateView):
+  model = Bird
+  fields = ['description', 'habitat', 'color', 'age']

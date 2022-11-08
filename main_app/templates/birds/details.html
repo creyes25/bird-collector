@@ -22,6 +22,9 @@
     <p>Habitat: {{bird.habitat}}</p>
     <p><small>{{bird.description}}</small></p>
   </div>
+  <div class="bird-actions">
+    <a href="{% url 'birds_update' bird.id %}">Edit</a>
+  </div>
 </section>
 
 {% endblock  %}
