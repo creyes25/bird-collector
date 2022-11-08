@@ -5,7 +5,7 @@
 <link 
   rel="stylesheet"
   type="text/css"
-  {% comment %} href="{% static 'css/cats/cat-index.css' %}" {% endcomment %}
+  {% comment %} href="{% static 'css/birds/bird-index.css' %}" {% endcomment %}
 />
 {% endblock  %}
 
@@ -14,7 +14,7 @@
 <section class="card-container">
   {% for bird in birds %}
   <div class="card">
-    {% comment %} <a href=" {% url 'finchs_details' finch.id %} "> {% endcomment %}
+    <a href=" {% url 'birds_details' bird.id %} ">
       <div class="card-content">
         <img 
         src="{% static '' %}" 
@@ -24,7 +24,7 @@
       <h2 class="card-title">{{bird.name}}</h2>
       <p>A {{bird.age}} year old {{bird.type}}</p>
       <p>Color: {{bird.color}}</p>
-    {% comment %} </a> {% endcomment %}
+    </a>
   </div>
 
   {% endfor %}

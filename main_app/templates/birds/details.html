@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="{% static 'css/birds/bird-details.css' %}"
+/>
+{% endblock  %}
+
+{% block content %}
+
+<section class="bird-containter">
+  <div class="bird-img">
+    <img src="" alt="">
+  </div>
+  <div class="bird-details">
+    <h1>{{bird.name}}</h1>
+    <h3>A {{bird.age}} year old {{bird.type}}</h3>
+    <p>Color: {{bird.color}}</p>
+    <p>Habitat: {{bird.habitat}}</p>
+    <p><small>{{bird.description}}</small></p>
+  </div>
+</section>
+
+{% endblock  %}
