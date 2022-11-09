@@ -18,6 +18,18 @@ FOODS = (
 )
 
 # Create your models here.
+
+class Care(models.Model):
+  name = models.CharField(max_length=50)
+  benefits = models.TextField(max_length=150)
+
+  def __str__(self):
+      return self.name
+  
+  def get_absolute_url(self):
+      return reverse("care_details", kwargs={"pk": self.pk})
+
+
 class Bird(models.Model):
   name = models.CharField(max_length=100)
   type = models.CharField(max_length=100)
@@ -25,6 +37,7 @@ class Bird(models.Model):
   habitat = models.CharField(max_length=100)
   color = models.CharField(max_length=100)
   age = models.IntegerField()
+  cares = models.ManyToManyField(Care)
 
   def __str__(self):
     return self.name
@@ -54,14 +67,5 @@ class Feeding(models.Model):
   class Meta:
     ordering = ['-date']
 
-class Care(models.Model):
-  name = models.CharField(max_length=50)
-  benefits = models.TextField(max_length=150)
 
-  def __str__(self):
-      return self.name
-  
-  def get_absolute_url(self):
-      return reverse("care_details", kwargs={"pk": self.pk})
-  
   

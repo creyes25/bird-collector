@@ -75,6 +75,29 @@
       </div>
     {% endif %}
   </section>
+  <section class="cares">
+    <div class="subsection-title">
+      <h2>Care Requirements</h2>
+    </div>
+    <h3>{{ bird.name }}'s Care Requirements</h3>
+    <div class="subsection-content">
+      {% if bird.care.count %}
+        {% for care in bird.cares.all %}
+          <div class="care-container">
+            <a href="{% url 'care_details' care.id %}">
+              <p>Requirement: {{ care.name }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-cares">{{bird.name}} doesn't have any care requirements</p>
+      {% endif %}
+    </div>
+    <h3>Available Care Requirements</h3>
+    <div class="subsection-content">
+      {% comment %} We'll display available reqs here {% endcomment %}
+    </div>
+  </section>
 </div>
 
 {% endblock  %}

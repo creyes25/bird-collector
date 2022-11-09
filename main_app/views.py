@@ -22,7 +22,7 @@ def birds_details(request, bird_id):
 
 class BirdCreate(CreateView):
   model = Bird
-  fields = '__all__'
+  fields = ['name', 'type', 'description', 'color', 'age']
   success_url = '/birds/'
 
 class BirdUpdate(UpdateView):
