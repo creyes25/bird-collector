@@ -54,7 +54,7 @@ class Feeding(models.Model):
   class Meta:
     ordering = ['-date']
 
-class Social(models.Model):
+class Care(models.Model):
   type = models.CharField(max_length=50)
   benefits = models.TextField(max_length=150)
 
