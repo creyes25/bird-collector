@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
+from django.contrib.auth.models import User
 
 MEALS = (
   ('B', 'Breakfast'),
@@ -38,6 +39,7 @@ class Bird(models.Model):
   color = models.CharField(max_length=100)
   age = models.IntegerField()
   cares = models.ManyToManyField(Care)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return self.name
@@ -45,7 +47,6 @@ class Bird(models.Model):
   def get_absolute_url(self):
       return reverse("birds_details", kwargs={"bird_id": self.id})
   
-
 
 class Feeding(models.Model):
   date = models.DateField('Feeding date')
