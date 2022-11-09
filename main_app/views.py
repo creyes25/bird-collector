@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Bird
+from django.views.generic import ListView, DetailView
+from .models import Bird, Care
 from .forms import FeedingForm
 
 # Create your views here.
@@ -40,3 +41,14 @@ def add_feeding(request, bird_id):
     new_feeding.bird_id = bird_id
     new_feeding.save()
   return redirect('birds_details', bird_id=bird_id)
+
+# care 
+class CareCreate(CreateView):
+  model = Care
+  fields = '__all__'
+
+class CareList(ListView):
+  model = Care
+
+class CareDetail(DetailView):
+  model = Care
