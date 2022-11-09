@@ -32,7 +32,7 @@ def birds_details(request, bird_id):
 
 class BirdCreate(LoginRequiredMixin, CreateView):
   model = Bird
-  fields = ['name', 'type', 'description', 'color', 'age']
+  fields = ['name', 'type', 'description', 'habitat','color', 'age']
   
   def form_valid(self, form):
     form.instance.user = self.request.user
