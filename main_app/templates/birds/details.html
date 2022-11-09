@@ -3,10 +3,17 @@
 
 {% block head %}
 <link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js">
+</script>
+<link 
   rel="stylesheet" 
   type="text/css" 
   href="{% static 'css/birds/bird-details.css' %}"
 />
+<script defer src="{% static 'js/bird-detail.js' %}"></script>
 {% endblock  %}
 
 {% block content %}
@@ -33,6 +40,13 @@
     <div class="subsection-title">
       <h2>Feedings</h2>
     </div>
+    <h3>Add a Feeding</h3>
+    <form method='POST' class="subsection-content">
+      {% csrf_token %}
+      {{feeding_form.as_p}}
+      <button type="submit" class='btn submit'>Add Feeding</button>
+    </form>
+    <h3>Past Feedings</h3>
     <table>
       <thead>
         <tr>

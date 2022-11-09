@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Bird
+from .forms import FeedingForm
 
 # Create your views here.
 def home(request):
@@ -15,7 +16,8 @@ def birds_index(request):
 
 def birds_details(request, bird_id):
   bird = Bird.objects.get(id=bird_id)
-  return render(request, 'birds/details.html', {'bird': bird} )
+  feeding_form = FeedingForm()
+  return render(request, 'birds/details.html', {'bird': bird, 'feeding_form': feeding_form})
 
 class BirdCreate(CreateView):
   model = Bird
