@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 MEALS = (
   ('B', 'Breakfast'),
@@ -30,6 +31,8 @@ class Bird(models.Model):
 
   def get_absolute_url(self):
       return reverse("birds_details", kwargs={"bird_id": self.id})
+  
+
 
 class Feeding(models.Model):
   date = models.DateField('Feeding date')
@@ -50,3 +53,15 @@ class Feeding(models.Model):
   
   class Meta:
     ordering = ['-date']
+
+class Social(models.Model):
+  type = models.CharField(max_length=50)
+  benefits = models.TextField(max_length=150)
+
+  def __str__(self):
+      return self.name
+  
+  def get_absolute_url(self):
+      return reverse("exercises_detail", kwargs={"pk": self.pk})
+  
+  
