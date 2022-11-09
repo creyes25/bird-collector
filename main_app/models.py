@@ -55,7 +55,7 @@ class Feeding(models.Model):
     ordering = ['-date']
 
 class Care(models.Model):
-  type = models.CharField(max_length=50)
+  name = models.CharField(max_length=50)
   benefits = models.TextField(max_length=150)
 
   def __str__(self):
