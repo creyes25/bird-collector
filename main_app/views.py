@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Bird
 from .forms import FeedingForm
@@ -31,3 +31,12 @@ class BirdUpdate(UpdateView):
 class BirdDelete(DeleteView):
   model = Bird
   success_url = '/birds/'
+
+# feeding
+def add_feeding(request, bird_id):
+  form = FeedingForm(request.POST)
+  if form.is_valid():
+    new_feeding = form.save(commit=False)
+    new_feeding.bird_id = bird_id
+    new_feeding.save()
+  return redirect('birds_details', bird_id=bird_id)
