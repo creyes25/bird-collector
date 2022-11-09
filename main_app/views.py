@@ -52,3 +52,11 @@ class CareList(ListView):
 
 class CareDetail(DetailView):
   model = Care
+
+class CareUpdate(UpdateView):
+  model = Care
+  fields = ['name', 'benefits']
+
+class CareDelete(DeleteView):
+  model = Care
+  success_url = '/cares/'

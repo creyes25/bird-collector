@@ -62,6 +62,6 @@ class Care(models.Model):
       return self.name
   
   def get_absolute_url(self):
-      return reverse("exercises_detail", kwargs={"pk": self.pk})
+      return reverse("care_details", kwargs={"pk": self.pk})
   
   

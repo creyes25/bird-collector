@@ -14,5 +14,7 @@ urlpatterns = [
     #care
     path('cares/create', views.CareCreate.as_view(), name='cares_create'),
     path('cares/', views.CareList.as_view(), name='cares_index'),
-    path('cares/<int:pk>/', views.CareDetail.as_view(), name='care_details')
+    path('cares/<int:pk>/', views.CareDetail.as_view(), name='care_details'),
+    path('cares/<int:pk>/update/', views.CareUpdate.as_view(), name='cares_update'),
+    path('cares/<int:pk>/delete/', views.CareDelete.as_view(), name='cares_delete'),
 ]
