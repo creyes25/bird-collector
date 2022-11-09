@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+
 from .models import Bird, Care
 from .forms import FeedingForm
 
@@ -17,8 +18,10 @@ def birds_index(request):
 
 def birds_details(request, bird_id):
   bird = Bird.objects.get(id=bird_id)
+  cares_bird_doesnt_have = Care.objects.exclude(id__in = bird.cares.all().values_list('id'))
+
   feeding_form = FeedingForm()
-  return render(request, 'birds/details.html', {'bird': bird, 'feeding_form': feeding_form})
+  return render(request, 'birds/details.html', {'bird': bird, 'feeding_form': feeding_form, 'cares': cares_bird_doesnt_have})
 
 class BirdCreate(CreateView):
   model = Bird
@@ -60,3 +63,7 @@ class CareUpdate(UpdateView):
 class CareDelete(DeleteView):
   model = Care
   success_url = '/cares/'
+
+def assoc_care(request, bird_id, care_id):
+  Bird.objects.get(id=bird_id).cares.add(care_id)
+  return redirect('birds_details', bird_id=bird_id)
