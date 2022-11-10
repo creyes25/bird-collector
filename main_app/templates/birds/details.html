@@ -11,7 +11,7 @@
 <link 
   rel="stylesheet" 
   type="text/css" 
-  href="{% static 'css/birds/bird-details.css' %}"
+  href="{% static 'css/birds/bird-detail.css' %}"
 />
 <script defer src="{% static 'js/bird-detail.js' %}"></script>
 {% endblock  %}
@@ -30,12 +30,12 @@
     <p><small>{{bird.description}}</small></p>
   </div>
   <div class="bird-actions">
-    <a href="{% url 'birds_update' bird.id %}"><button>Edit</button></a>
-    <a href="{% url 'birds_delete' bird.id %}"><button>Delete</button></a>
+    <a href="{% url 'birds_update' bird.id %}"><button class="btn warn">Edit</button></a>
+    <a href="{% url 'birds_delete' bird.id %}"><button class="btn">Delete</button></a>
   </div>
 </section>
 
-<div class="feedings-exercise-container">
+<div class="feedings-care-container">
   <section class="feedings">
     <div class="subsection-title">
       <h2>Feedings</h2>
