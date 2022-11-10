@@ -15,8 +15,10 @@
     <h2>{{ care.name }}</h2>
     <p>Benefits: {{ care.benefits }}</p>
   </div>
-  <a href="{% url 'cares_update' care.id %}" class="btn warn">Edit</a>
-  <a href="{% url 'cares_delete' care.id %}" class="btn danger">Delete</a>
+  <div class='action-btns'>
+    <a href="{% url 'cares_update' care.id %}" class="btn warn">Edit</a>
+    <a href="{% url 'cares_delete' care.id %}" class="btn danger">Delete</a>
+  </div>
 </div>
 
 {% endblock %}
