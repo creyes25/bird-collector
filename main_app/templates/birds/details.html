@@ -19,9 +19,6 @@
 {% block content %}
 
 <section class="bird-containter">
-  <div class="bird-img">
-    <img src="" alt="">
-  </div>
   <div class="bird-details">
     <h1>{{bird.name}}</h1>
     <h3>A {{bird.age}} year old {{bird.type}}</h3>
@@ -39,6 +36,22 @@
   <section class="feedings">
     <div class="subsection-title">
       <h2>Feedings</h2>
+      <img 
+        src="{% static 'images/feeding1.svg' %}" 
+        alt="A green parrot"
+      />
+      <img 
+        src="{% static 'images/feeding2.svg' %}"
+        alt="A brown and red bird"
+      />
+      <img 
+        src="{% static 'images/feeding3.svg' %}" 
+        alt="A bird"
+      />
+      <img 
+        src="{% static 'images/feeding4.svg' %}" 
+        alt="A blue/purple bird"
+      />
     </div>
     <h3>Add a Feeding</h3>
     <form 
@@ -78,6 +91,9 @@
   <section class="cares">
     <div class="subsection-title">
       <h2>Care Requirements</h2>
+      <img src="{% static 'images/care2.svg' %}" alt="A bird house" />
+      <img src="{% static 'images/care3.svg' %}" alt="A red heart" />
+      <img src="{% static 'images/care4.svg' %}" alt="A green feather" />
     </div>
     <h3>{{ bird.name }}'s Care Requirements</h3>
     <div class="subsection-content">

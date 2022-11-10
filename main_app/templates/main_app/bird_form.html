@@ -13,6 +13,7 @@
   {% else %}
     <h1>Add a Bird</h1>  
   {% endif %}
+  <img src="{% static 'images/bird-form.svg' %}" alt="A blue bird">
 </div>
 <form action="" method="POST" class='form-container'>
   {% csrf_token %}
