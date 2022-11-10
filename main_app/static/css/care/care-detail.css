@@ -9,9 +9,10 @@ main {
   width: 224px;
   height: 224px;
   margin: 25px 25px 15px 40px;
-  border: solid 2px;
+  border: solid rgba(69, 103, 66, 0.916) 2px;
   box-shadow: var(--card-box-shadow);
   position: relative;
+  background-color: #95c5af51;
 }
 
 
