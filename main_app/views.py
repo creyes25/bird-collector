@@ -17,13 +17,13 @@ class Home(LoginView):
 def about(request):
   return render(request, 'about.html')
 
-
+@login_required
 @csrf_exempt
 def birds_index(request):
   birds = Bird.objects.filter(user=request.user)
   return render(request, 'birds/index.html', {'birds': birds})
 
-
+@login_required
 @csrf_exempt
 def birds_details(request, bird_id):
   bird = Bird.objects.get(id=bird_id)
@@ -49,7 +49,7 @@ class BirdDelete(LoginRequiredMixin, DeleteView):
   success_url = '/birds/'
 
 # feeding
-
+@login_required
 @csrf_exempt
 def add_feeding(request, bird_id):
   form = FeedingForm(request.POST)
@@ -78,6 +78,7 @@ class CareDelete(LoginRequiredMixin, DeleteView):
   model = Care
   success_url = '/cares/'
 
+@login_required
 @csrf_exempt
 def assoc_care(request, bird_id, care_id):
   Bird.objects.get(id=bird_id).cares.add(care_id)
