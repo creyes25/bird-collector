@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required, csrf_exempt
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Bird, Care
@@ -18,13 +18,11 @@ def about(request):
   return render(request, 'about.html')
 
 @login_required
-@csrf_exempt
 def birds_index(request):
   birds = Bird.objects.filter(user=request.user)
   return render(request, 'birds/index.html', {'birds': birds})
 
 @login_required
-@csrf_exempt
 def birds_details(request, bird_id):
   bird = Bird.objects.get(id=bird_id)
   cares_bird_doesnt_have = Care.objects.exclude(id__in = bird.cares.all().values_list('id'))
@@ -50,7 +48,6 @@ class BirdDelete(LoginRequiredMixin, DeleteView):
 
 # feeding
 @login_required
-@csrf_exempt
 def add_feeding(request, bird_id):
   form = FeedingForm(request.POST)
   if form.is_valid():
@@ -79,7 +76,6 @@ class CareDelete(LoginRequiredMixin, DeleteView):
   success_url = '/cares/'
 
 @login_required
-@csrf_exempt
 def assoc_care(request, bird_id, care_id):
   Bird.objects.get(id=bird_id).cares.add(care_id)
   return redirect('birds_details', bird_id=bird_id)
