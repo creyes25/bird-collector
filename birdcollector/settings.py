@@ -31,6 +31,7 @@ SECRET_KEY = SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG') == 'True' 
 
 ALLOWED_HOSTS = ['bird-collector-django.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://bird-collector-django.up.railway.app/']
 
 
 
