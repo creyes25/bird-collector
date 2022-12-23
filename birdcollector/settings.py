@@ -28,9 +28,9 @@ environ.Env.read_env()
 SECRET_KEY = SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG') == 'False' 
+DEBUG = env('DEBUG') == 'True' 
 
-ALLOWED_HOSTS = ['bird-collector-django.up.railway.app']
+ALLOWED_HOSTS = ['https://bird-collector-django.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['https://bird-collector-django.up.railway.app']
 
 
@@ -142,4 +142,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEBUG_PROPAGATE_EXCEPTIONS = True 
 
-
+django_heroku.settings(locals())
