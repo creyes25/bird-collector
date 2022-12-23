@@ -15,7 +15,7 @@ from .forms import FeedingForm
 # Create your views here.
 class Home(LoginView):
   template_name = 'home.html'
-  
+
 def about(request):
   return render(request, 'about.html')
 
@@ -94,4 +94,4 @@ def signup(request):
       error_message = 'Invalid sign up - try again'
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
-  return render(request, 'signup.html', context, context_instance=RequestContext(request))
+  return render(request, 'signup.html', context)
