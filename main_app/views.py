@@ -6,8 +6,6 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.template import RequestContext
-
 
 from .models import Bird, Care
 from .forms import FeedingForm
