@@ -1,1 +1,1 @@
-web: gunicorn birdcollector.wsgi
+web: python manage.py migrate && gunicorn birdcollector.wsgi
