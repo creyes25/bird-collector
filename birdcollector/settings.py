@@ -91,7 +91,7 @@ if db_config:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '<PGDATABASE>',
+        'NAME': os.environ.get('POSTGRES_NAME'),
         'USER': '<PGUSER>',
         'PASSWORD': '<PGPASSWORD>',
         'HOST': '<PGHOST>',
