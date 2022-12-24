@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import environ
 import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,27 +82,35 @@ WSGI_APPLICATION = 'birdcollector.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+db_config = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+if db_config:
+    # railway - production
+    DATABASES = {}
+    DATABASES['default'] = db_config
+else:
+    # local
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('POSTGRES_NAME'),
+            'USER': os.environ.get('POSTGRES_USER'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+            'HOST': 'db',
+            'PORT': 5432,
+        }
+    }   
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ.get('POSTGRES_NAME'),
-#         'USER': os.environ.get('POSTGRES_USER'),
-#         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-#         'HOST': 'PGHOST',
-#         'PORT': 5432,
+#         'NAME': '<PGDATABASE>',
+#         'USER': '<PGUSER>',
+#         'PASSWORD': '<PGPASSWORD>',
+#         'HOST': '<PGHOST>',
+#         'PORT': '<PGPORT>',
 #     }
 # }
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '<PGDATABASE>',
-        'USER': '<PGUSER>',
-        'PASSWORD': '<PGPASSWORD>',
-        'HOST': '<PGHOST>',
-        'PORT': '<PGPORT>',
-    }
-}
 
 
 # Password validation
