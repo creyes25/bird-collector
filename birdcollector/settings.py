@@ -86,18 +86,18 @@ db_config = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 if db_config:
     # railway - production
-    # DATABASES = {}
-    # DATABASES['default'] = db_config
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '<PGDATABASE>',
-        'USER': '<PGUSER>',
-        'PASSWORD': '<PGPASSWORD>',
-        'HOST': '<PGHOST>',
-        'PORT': '<PGPORT>',
-    }
-}
+    DATABASES = {}
+    DATABASES['default'] = db_config
+    # DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': '<PGDATABASE>',
+    #     'USER': '<PGUSER>',
+    #     'PASSWORD': '<PGPASSWORD>',
+    #     'HOST': '<PGHOST>',
+    #     'PORT': '<PGPORT>',
+    # }
+    # }
 else:
     # local
     DATABASES = {
