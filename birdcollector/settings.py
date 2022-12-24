@@ -15,6 +15,8 @@ import os
 import environ
 import django_heroku
 import dj_database_url
+from django.conf import settings
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,18 +88,20 @@ db_config = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 if db_config:
     # railway - production
-    # DATABASES = {}
-    # DATABASES['default'] = db_config
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_NAME'),
-        'USER': '<PGUSER>',
-        'PASSWORD': '<PGPASSWORD>',
-        'HOST': '<PGHOST>',
-        'PORT': '<PGPORT>',
-    }
-    }
+    DATABASES = {}
+    DATABASES['default'] = db_config
+    db_name = settings.DATABASES['default']['NAME']
+
+    # DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': '<PGDATABASE>',
+    #     'USER': '<PGUSER>',
+    #     'PASSWORD': '<PGPASSWORD>',
+    #     'HOST': '<PGHOST>',
+    #     'PORT': '<PGPORT>',
+    # }
+    # }
 else:
     # local
     DATABASES = {
