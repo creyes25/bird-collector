@@ -95,7 +95,10 @@ if db_config:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
+        'NAME': '<PGDATABASE>',
+        'OPTIONS': {
+            'read_default_file': '/path/to/my.cnf',
+        },
         'USER': '<PGUSER>',
         'PASSWORD': '<PGPASSWORD>',
         'HOST': '<PGHOST>',
