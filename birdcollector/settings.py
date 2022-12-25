@@ -84,39 +84,17 @@ WSGI_APPLICATION = 'birdcollector.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-db_config = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
-if db_config:
-    # railway - production
-    # DATABASES = {}
-    # DATABASES['default'] = db_config
-    # db_name = settings.DATABASES['default']['NAME']
-
-    DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': '<PGDATABASE>',
-        'OPTIONS': {
-            'read_default_file': '/path/to/my.cnf',
-        },
         'USER': '<PGUSER>',
         'PASSWORD': '<PGPASSWORD>',
         'HOST': '<PGHOST>',
         'PORT': '<PGPORT>',
     }
     }
-else:
-    # local
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('POSTGRES_NAME'),
-            'USER': os.environ.get('POSTGRES_USER'),
-            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-            'HOST': 'db',
-            'PORT': 5432,
-        }
-    }   
 
 
 
